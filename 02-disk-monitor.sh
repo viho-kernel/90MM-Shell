@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WEB_URL="https://hooks.slack.com/services/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"
+WEB_URL="https://hooks.slack.com/services/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"
 
 THRESHOLD=80
 LOG_DIR="/var/log"
