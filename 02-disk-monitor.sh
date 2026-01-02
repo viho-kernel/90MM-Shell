@@ -20,7 +20,7 @@ if [ "$USAGE" -ge "$THRESHOLD" ]; then
 
    AFTER=$(df -h / | awk 'NR==2 {print $5}' )
 
-   MESSAGE="Disk usage alert on $HOST"
+   MESSAGE="Disk usage alert on $HOST after cleanup is $AFTER"
 
    echo "Before cleanup: $BEFORE" echo "After cleanup: $AFTER" echo "Time: $DATE" echo "$MESSAGE"
 
