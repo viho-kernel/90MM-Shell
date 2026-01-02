@@ -1,5 +1,4 @@
 #!/bin/bash
-source ./urls.env
 
 SERVICE="ssh"
 WEB_URL="https://hooks.slack.com/services/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"
