@@ -23,7 +23,7 @@ if [ "$USAGE" -ge "$THRESHOLD" ]; then
    MESSAGE="Disk usage alert on $HOST"
 
    Before cleanup: $BEFORE
-   AFTER cleanup: $AFTER
+   AFTER cleanup: $AFTER``
 
    TIME: $(date)
 
