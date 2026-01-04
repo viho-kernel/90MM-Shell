@@ -9,7 +9,7 @@ WEB_URL="https://hooks.slack.com/services/T0A6205T7UY/B0A6DQAVBQD/MV2ERb01kcY62s
 
 MATCHINGWORDS=$(grep -iE "$KEYWORDS" $LOG_FILE | tail -5)
 
-if [ ! -z $MATCHINGWORDS ]; then
+if [ ! -z "$MATCHINGWORDS" ]; then
 
    MESSAGE="🚨 Log Alert on $HOST
 File: $LOG_FILE
