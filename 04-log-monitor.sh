@@ -7,7 +7,7 @@ KEYWORDS="error|fail|critical|panic|successfully"
 
 WEB_URL="https://hooks.slack.com/services/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"
 
-MATCHINGWORDS=$(grep -i "$KEYWORDS" $LOG_FILE | tail -5)
+MATCHINGWORDS=$(grep -iE "$KEYWORDS" $LOG_FILE | tail -5)
 
 if [ ! -z $MATCHINGWORDS ]; then
 
