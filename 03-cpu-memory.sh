@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EB_URL="https://hooks.slack.com/services/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"
+WEB_URL="https://hooks.slack.com/services/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"
 ### This script will explain us how to check the cpu utilization on your instance and memory.
 ### High cpu and memory will crash your systems
 ## HOW TO check and trigger the alerts in your slack channel
