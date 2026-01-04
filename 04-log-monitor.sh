@@ -3,23 +3,28 @@
 
 #sys logs files are saved here
 LOG_FILE="/var/log/syslog"
-KEYWORDS="error|fail|critical|panic|success"
+KEYWORDS="error|fail|critical|panic|successfully"
 
 WEB_URL="https://hooks.slack.com/services/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"
 
-HOST=$(hostname)
-DATE=$(date)
+MATCHINGWORDS=$(grep -i "$KEYWORDS" $LOG_FILE | tail -5)
 
-MATCHES=$(grep -iE "$KEYWORDS" $LOG_FILE | tail -5)
+if [ ! -z $MATCHINGWORDS ]; then
 
-if [ ! -z "$MATCHES" ]; then #here z means length of the string is empty ! -z which means if lenght of the string is not empty.
-
-  MESSAGE="🚨 Log Alert on $HOST
+   MESSAGE="🚨 Log Alert on $HOST
 File: $LOG_FILE
 Time: $DATE
 Last Errors:
-$MATCHES"
+$MATCHINGWORDS"
 
-curl -s -X POST -H 'Content-type: application/json' \
+  curl -s -X POST -H 'Content-type: application/json' \
+    --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
+fi
+
+
+
+
+
+  curl -s -X POST -H 'Content-type: application/json' \
     --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
 fi
