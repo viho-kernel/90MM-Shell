@@ -16,7 +16,7 @@ DATE=$(date)
 ###how to check cpu on your linux machine use "top -bn1"
 
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}')
-MEM_USAGE=$(free | awk ' NR==2 { print $3/$2 * 100}')
+MEM_USAGE=$(free | awk ' NR==2 { print $3/$2 * 100}' | cut -d. -f1)
 
 if [ "$CPU_USAGE" -ge "$CPU_THRESHOLD" ] || [ "$MEM_USAGE" -ge "$MEM_THRESHOLD" ]; then
   MESSAGE="⚠️ Resource Alert on $HOST
@@ -27,4 +27,6 @@ Time: $DATE"
   curl -s -X POST -H 'Content-type: application/json' \
     --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
 fi
+
+
 
