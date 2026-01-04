@@ -19,14 +19,12 @@ CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}')
 MEM_USAGE=$(free | awk ' NR==2 { print $3/$2 * 100}')
 
 if [ "$CPU_USAGE" -ge "$CPU_THRESHOLD" ] || [ "$MEM_USAGE" -ge "$MEM_THRESHOLD" ]; then
-  MESSAGE=" Alert for $HOST
-  CPU Usage: ${CPU_USAGE}%
-  Memory Usage: ${MEM_USAGE}%
-  Time: $DATE"
+  MESSAGE="⚠️ Resource Alert on $HOST
+CPU Usage: ${CPU_USAGE}%
+Memory Usage: ${MEM_USAGE}%
+Time: $DATE"
 
-curl -s -X POST -H 'Content-type: application/json' \
+  curl -s -X POST -H 'Content-type: application/json' \
     --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
-
-
 fi
 
