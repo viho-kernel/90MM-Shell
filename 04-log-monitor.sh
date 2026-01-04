@@ -20,11 +20,3 @@ $MATCHINGWORDS"
   curl -s -X POST -H 'Content-type: application/json' \
     --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
 fi
-
-
-
-
-
-  curl -s -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
-fi
