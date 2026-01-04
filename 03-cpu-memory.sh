@@ -6,7 +6,7 @@ WEB_URL="https://hooks.slack.com/services/T0A6205T7UY/B0A6DQAVBQD/MV2ERb01kcY62s
 ## HOW TO check and trigger the alerts in your slack channel
 
 #Determining Threshold
-CPU_THRESHOLD=5
+CPU_THRESHOLD=5 
 MEM_THRESHOLD=5
 
 ### defining variables
@@ -15,8 +15,8 @@ DATE=$(date)
 
 ###how to check cpu on your linux machine use "top -bn1"
 
-CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}')
-MEM_USAGE=$(free | awk ' NR==2 { print $3/$2 * 100}' | cut -d. -f1)
+CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}' | cut -d. -f1) 
+MEM_USAGE=$(free | awk 'NR==2 {print $3/$2 * 100}' | cut -d. -f1)
 
 if [ "$CPU_USAGE" -ge "$CPU_THRESHOLD" ] || [ "$MEM_USAGE" -ge "$MEM_THRESHOLD" ]; then
   MESSAGE="⚠️ Resource Alert on $HOST
