@@ -10,6 +10,8 @@ HOST=$(hostname)
 
 DATE=$(date)
 
+#disk space is checked using df -h
+
 USAGE=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
 
 if [ "$USAGE" -ge "$THRESHOLD" ]; then
