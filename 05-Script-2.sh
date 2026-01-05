@@ -22,7 +22,6 @@ if [ "$CPU" -ge 10 ] || [ "$MEM" -ge 5 ] || [ "$DISK" -ge 12 ]; then
 fi
 
 if [ "$STATUS" = "NOT_OK" ]; then
-  
   curl -X POST -sL -H 'Content-type: application/json' --data "{\"text\":\"🚨 System Health ALERT on $HOST\n$(cat $REPORT)\"}" $WEB_URL
 
 fi
