@@ -68,3 +68,17 @@ git pull origin main
 
 
 ====================JAN3RD COMMI============================
+
+tar -czf --> combine multiple files into a single file
+tar -czf - Create/Compress archive (write)
+
+c = create new archive
+z = compress with gzip
+f = file to write to
+Creates a new compressed archive from files/folders
+
+tar -tzf - List/View contents (read-only)
+
+t = list contents
+z = decompress with gzip
+f = file to read from
