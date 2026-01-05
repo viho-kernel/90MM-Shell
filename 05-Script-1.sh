@@ -10,8 +10,6 @@ BACKUP_FILE="$BACKUP_DIR/etc-backup-$DATE.tar.gz"
 
 mkdir -p $BACKUP_DIR
 
-mkdir -p $LOG_FILE
-
 echo "[$(date)] Backup started" >> $LOG_FILE
 
 tar -czf $BACKUP_FILE $SOURCE_DIR 2>> $LOG_FILE
