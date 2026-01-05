@@ -5,7 +5,7 @@ WEB_URL="https://hooks.slack.com/services/T0A6205T7UY/B0A6DQAVBQD/MV2ERb01kcY62s
 REPORT="/tmp/system-health.txt"
 DATE=$(date)
 HOST=$(hostname)
-STAUS="OK"
+STATUS="OK"
 
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}' | cut -d. -f1) 
 MEM_USAGE=$(free | awk 'NR==2 {print $3/$2 * 100}' | cut -d. -f1)
