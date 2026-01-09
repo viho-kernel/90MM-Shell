@@ -1,2 +1,4 @@
 *.env
 urls.env
+
+config.env

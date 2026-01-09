@@ -1,7 +1,20 @@
 #!/bin/bash
 
+set -euo pipefail
+
+
+CONFIG_FILE="$(dirname "$0")/config.env" 
+if [ -f "$CONFIG_FILE" ]; then 
+# shellcheck disable=SC1090 
+source "$CONFIG_FILE" 
+fi 
+# Fail fast if variable not set 
+if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then 
+echo "Error: SLACK_WEBHOOK_URL not set. Please create config.env or export it in your environment." 
+exit 1 
+fi
+
 SERVICE="ssh"
-#WEB_URL="https://hooks.slack.com/services/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"
 
 #checking whether service is active or not
 
@@ -19,6 +32,6 @@ MESSAGE="✅ Service '$SERVICE' was DOWN and has been restarted successfully on 
   else
     MESSAGE="❌ CRITICAL: Service '$SERVICE' is DOWN and restart FAILED on $(hostname)"
 fi
-curl -X POST -sL -H 'Content-type: application/json' --data "{\"text\":\"${MESSAGE} .\"}" $WEB_URL
+curl -X POST -sL -H 'Content-type: application/json' --data "{\"text\":\"${MESSAGE} .\"}" $SLACK_WEBHOOK_URL
 
 fi

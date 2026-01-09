@@ -1,6 +1,19 @@
 #!/bin/bash
 
-#WEB_URL="https://hooks.slack.com/services/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"
+set -euo pipefail
+
+
+CONFIG_FILE="$(dirname "$0")/config.env" 
+if [ -f "$CONFIG_FILE" ]; then 
+# shellcheck disable=SC1090 
+source "$CONFIG_FILE" 
+fi 
+# Fail fast if variable not set 
+if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then 
+echo "Error: SLACK_WEBHOOK_URL not set. Please create config.env or export it in your environment." 
+exit 1 
+fi
+
 
 THRESHOLD=20
 LOG_DIR="/var/log"
@@ -27,5 +40,5 @@ if [ "$USAGE" -ge "$THRESHOLD" ]; then
    echo "Before cleanup: $BEFORE" echo "After cleanup: $AFTER" echo "Time: $DATE" echo "$MESSAGE"
 
    curl -s -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
+    --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL
 fi

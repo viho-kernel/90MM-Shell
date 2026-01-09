@@ -1,9 +1,18 @@
 #!/bin/bash
 
-#WEB_URL="https://hooks.slack.com/services/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"
-### This script will explain us how to check the cpu utilization on your instance and memory.
-### High cpu and memory will crash your systems
-## HOW TO check and trigger the alerts in your slack channel
+set -euo pipefail
+
+
+CONFIG_FILE="$(dirname "$0")/config.env" 
+if [ -f "$CONFIG_FILE" ]; then 
+# shellcheck disable=SC1090 
+source "$CONFIG_FILE" 
+fi 
+# Fail fast if variable not set 
+if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then 
+echo "Error: SLACK_WEBHOOK_URL not set. Please create config.env or export it in your environment." 
+exit 1 
+fi
 
 #Determining Threshold
 CPU_THRESHOLD=5 
@@ -25,7 +34,7 @@ Memory Usage: ${MEM_USAGE}%
 Time: $DATE"
 
   curl -s -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"$MESSAGE\"}" $WEB_URL
+    --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL
 fi
 
 

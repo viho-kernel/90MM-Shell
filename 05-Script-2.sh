@@ -1,6 +1,18 @@
 #!/bin/bash
 
-#WEB_URL="https://hooks.slack.com/services/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"
+set -euo pipefail
+
+
+CONFIG_FILE="$(dirname "$0")/config.env" 
+if [ -f "$CONFIG_FILE" ]; then 
+# shellcheck disable=SC1090 
+source "$CONFIG_FILE" 
+fi 
+# Fail fast if variable not set 
+if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then 
+echo "Error: SLACK_WEBHOOK_URL not set. Please create config.env or export it in your environment." 
+exit 1 
+fi
 
 REPORT="/tmp/system-health.txt"
 DATE=$(date)
@@ -22,6 +34,6 @@ if [ "$CPU" -ge 10 ] || [ "$MEM" -ge 5 ] || [ "$DISK" -ge 12 ]; then
 fi
 
 if [ "$STATUS" = "NOT_OK" ]; then
-  curl -X POST -sL -H 'Content-type: application/json' --data "{\"text\":\"🚨 System Health ALERT on $HOST\n$(cat $REPORT)\"}" $WEB_URL
+  curl -X POST -sL -H 'Content-type: application/json' --data "{\"text\":\"🚨 System Health ALERT on $HOST\n$(cat $REPORT)\"}" $SLACK_WEBHOOK_URL
 
 fi
