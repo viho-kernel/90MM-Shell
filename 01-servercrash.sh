@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVICE="ssh"
-WEB_URL="https://hooks.slack.com/services/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"
+#WEB_URL="https://hooks.slack.com/services/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"
 
 #checking whether service is active or not
 

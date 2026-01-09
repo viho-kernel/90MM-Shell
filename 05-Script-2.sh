@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WEB_URL="https://hooks.slack.com/services/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"
+#WEB_URL="https://hooks.slack.com/services/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"
 
 REPORT="/tmp/system-health.txt"
 DATE=$(date)

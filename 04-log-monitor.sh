@@ -5,7 +5,7 @@
 LOG_FILE="/var/log/syslog"
 KEYWORDS="error|fail|critical|panic|successfully"
 
-WEB_URL="https://hooks.slack.com/services/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"
+#WEB_URL="https://hooks.slack.com/services/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"
 
 MATCHINGWORDS=$(grep -iE "$KEYWORDS" $LOG_FILE | tail -5)
 
