@@ -28,8 +28,7 @@ if [ ! -z "$MATCHINGWORDS" ]; then
    MESSAGE="🚨 Log Alert on $HOST
 File: $LOG_FILE
 Time: $DATE
-Last Errors:
-$MATCHINGWORDS"
+Last Errors: $MATCHINGWORDS
 
   curl -s -X POST -H 'Content-type: application/json' \
     --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL
