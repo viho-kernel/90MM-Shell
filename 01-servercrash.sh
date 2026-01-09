@@ -32,6 +32,6 @@ MESSAGE="✅ Service '$SERVICE' was DOWN and has been restarted successfully on 
   else
     MESSAGE="❌ CRITICAL: Service '$SERVICE' is DOWN and restart FAILED on $(hostname)"
 fi
-curl -X POST -sL -H 'Content-type: application/json' --data "{\"text\":\"${MESSAGE} .\"}" $SLACK_WEBHOOK_URL
+curl -X POST $SLACK_WEBHOOK_URL -sL -H 'Content-type: application/json' --data "{\"text\":\"${MESSAGE} .\"}" 
 
 fi

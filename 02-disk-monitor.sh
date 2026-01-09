@@ -38,6 +38,5 @@ if [ "$USAGE" -ge "$THRESHOLD" ]; then
 
    echo "Before cleanup: $BEFORE" echo "After cleanup: $AFTER" echo "Time: $DATE" echo "$MESSAGE"
 
-   curl -s -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL
+   curl -X POST $SLACK_WEBHOOK_URL -sL -H 'Content-type: application/json' --data "{\"text\":\"$MESSAGE\"}" 
 fi

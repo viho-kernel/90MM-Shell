@@ -29,7 +29,5 @@ File: $LOG_FILE
 Time: $DATE
 Last Errors:
 $MATCHINGWORDS"
-
-   curl -s -X POST -H 'Content-type: application/json' \
-     --data "{\"text\":\"$MESSAGE\"}" "$SLACK_WEBHOOK_URL"
+   curl -X POST $SLACK_WEBHOOK_URL -sL -H 'Content-type: application/json' --data "{\"text\":\"$MESSAGE\"}"
 fi

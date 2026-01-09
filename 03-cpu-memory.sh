@@ -33,8 +33,7 @@ CPU Usage: ${CPU_USAGE}%
 Memory Usage: ${MEM_USAGE}%
 Time: $DATE"
 
-  curl -s -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL
+  curl -X POST $SLACK_WEBHOOK_URL -sL -H 'Content-type: application/json' --data "{\"text\":\"$MESSAGE\"}"
 fi
 
 
