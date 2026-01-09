@@ -31,5 +31,5 @@ Time: $DATE
 Last Errors: $MATCHINGWORDS
 
   curl -s -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL
+    --data "{\"text\":\"$MESSAGE\"}" $SLACK_WEBHOOK_URL "
 fi
