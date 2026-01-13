@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-
 CONFIG_FILE="$(dirname "$0")/config.env" 
 if [ -f "$CONFIG_FILE" ]; then 
 # shellcheck disable=SC1090 
